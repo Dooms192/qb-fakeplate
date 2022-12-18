@@ -16,7 +16,7 @@ RegisterNetEvent('qb-fakeplate:server:checkFakePlate', function (carPlate, citiz
         checkFakePlate = v['fakeplate']
         checkCitizenid = v['citizenid']
     end
-    TriggerClientEvent('qb-fakeplate:client:checkFakePlate', -1, checkFakePlate, checkCitizenid)
+    TriggerClientEvent('qb-fakeplate:client:checkFakePlate', src, checkFakePlate, checkCitizenid)
 end)
 
 RegisterNetEvent('qb-fakeplate:server:fakePlate', function(carPlate, fakePlate)
@@ -29,7 +29,7 @@ end)
 QBCore.Functions.CreateUseableItem('screwdriverset', function(source, item)
     local Player = QBCore.Functions.GetPlayer(source)
     if not Player.Functions.GetItemByName(item.name) then return end
-    TriggerClientEvent('qb-fakeplate:client:remove', -1, source)
+    TriggerClientEvent('qb-fakeplate:client:remove', src, source)
 end)
 
 RegisterNetEvent('qb-fakeplate:server:removeFakePlate')
@@ -40,7 +40,7 @@ AddEventHandler('qb-fakeplate:server:removeFakePlate', function(carPlate, source
     for k, v in ipairs(check) do
         checkCarPlate = v['plate']
     end
-    TriggerClientEvent('qb-fakeplate:client:checkCarPlate', -1, checkCarPlate, carPlate)
+    TriggerClientEvent('qb-fakeplate:client:checkCarPlate', src, checkCarPlate, carPlate)
     MySQL.Async.execute('UPDATE player_vehicles SET fakeplate = ? WHERE plate = ?', { nil , checkCarPlate })
 end)
 
