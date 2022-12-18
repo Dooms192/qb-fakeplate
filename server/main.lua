@@ -3,7 +3,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
 QBCore.Functions.CreateUseableItem('fakeplate' , function(source, item)
     local Player = QBCore.Functions.GetPlayer(source)
     if not Player.Functions.GetItemByName(item.name) then return end
-    TriggerClientEvent('qb-fakeplate:client:useFakePlate', -1, source)
+    TriggerClientEvent('qb-fakeplate:client:useFakePlate', src)
 end)
 
 RegisterNetEvent('qb-fakeplate:server:checkFakePlate', function (carPlate, citizenid)
@@ -29,7 +29,7 @@ end)
 QBCore.Functions.CreateUseableItem('screwdriverset', function(source, item)
     local Player = QBCore.Functions.GetPlayer(source)
     if not Player.Functions.GetItemByName(item.name) then return end
-    TriggerClientEvent('qb-fakeplate:client:remove', src, source)
+    TriggerClientEvent('qb-fakeplate:client:remove', src)
 end)
 
 RegisterNetEvent('qb-fakeplate:server:removeFakePlate')
